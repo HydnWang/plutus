@@ -1,0 +1,19 @@
+<%= render 'common/error_messages' %>
+<%= f.label :balance_type, "收支類型" %>
+<%= f.select(:balance_type, options_for_select([['請選擇', ''], ['支出', 'Expense'], ['收入', 'Income']], "balance_type"), {}, class: 'select-tag') %>
+<%= f.label :category, "項目類別" %>
+<%= f.text_field :category %>
+<%= f.label :amount, "金額" %>
+<%= f.text_field :amount %>
+<%= f.label :entry_date, "日期" %>
+<div>
+  <%= f.date_select( :entry_date, 
+		               {
+		               	 start_year: 2015, 
+		                 selected: Date.today, 
+		               }, 
+	                   class: "select-tag col-md-4 col-sm-4 col-xs-12" 
+                   ) %>
+</div>
+<%= f.label :description, "備註" %>
+<%= f.text_area :description %>

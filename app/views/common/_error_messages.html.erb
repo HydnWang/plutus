@@ -1,0 +1,14 @@
+<% if @entry.errors.any? %>
+  <div id="" class="panel panel-danger">
+    <div class="panel-heading">
+      You have <%= pluralize(@entry.errors.count, "error") %> while entering.
+	</div>
+    <div class="panel-body">
+      <ul>
+        <% @entry.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
