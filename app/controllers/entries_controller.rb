@@ -5,7 +5,7 @@ class EntriesController < ApplicationController
     @entries_select  = Entry.select('strftime(\'%Y-%m\', entry_date) AS date_prefix').group('strftime(\'%m\', entry_date)').order('entry_date DESC')
     @entries_data    = Entry.select("DISTINCT ON (entries.entry_date) *").where("cast(entry_date as text) LIKE '#{date_string}%'").group(:category).order('entry_date ASC').sum(:amount)
     @title           = (params[:sort_month] && params[:sort_month]!="")? "#{params[:sort_month].split("-")[0]}年 #{params[:sort_month].split("-")[1]}月 紀錄" : "#{Date.current.strftime('%Y')}年 #{Date.current.strftime('%m')}月 紀錄"
-    @entries_balance = Entry.where("cast(entry_date as text) LIKE '#{date_string}%'").group(:balance_type).sum(:amount)
+    @entries_balance = Entry.select("DISTINCT ON (entries.entry_date) *").where("cast(entry_date as text) LIKE '#{date_string}%'").group(:balance_type).sum(:amount)
   end
 
   def detail
