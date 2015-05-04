@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   def index
     date_string      = (params[:sort_month] && params[:sort_month]!="")?(params[:sort_month]):(Date.current.strftime('%Y-%m'))
-    @entries         = Entry.where("entry_date LIKE '#{date_string}%'").paginate(page: params[:page], :per_page => 20).order('entry_date DESC')
+    @entries         = Entry.where("cast(entry_date as text) LIKE '#{date_string}%'").paginate(page: params[:page], :per_page => 20).order('entry_date DESC')
     @entries_select  = Entry.select('strftime(\'%Y-%m\', entry_date) AS date_prefix').group('strftime(\'%m\', entry_date)').order('entry_date DESC')
     @entries_data    = Entry.where("entry_date LIKE '#{date_string}%'").group(:category).order('entry_date ASC').sum(:amount)
     @title           = (params[:sort_month] && params[:sort_month]!="")? "#{params[:sort_month].split("-")[0]}年 #{params[:sort_month].split("-")[1]}月 紀錄" : "#{Date.current.strftime('%Y')}年 #{Date.current.strftime('%m')}月 紀錄"
