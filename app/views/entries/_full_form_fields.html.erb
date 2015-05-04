@@ -1,6 +1,6 @@
 <%= render 'common/error_messages' %>
 <%= f.label :balance_type, "收支類型" %>
-<%= f.select(:balance_type, options_for_select([['請選擇', ''], ['支出', 'Expense'], ['收入', 'Income']], "balance_type"), {}, class: 'select-tag') %>
+<%= f.select(:balance_type, options_for_select([['請選擇', ''], ['支出', 'Expense'], ['收入', 'Income']], @entry.balance_type), {}, class: 'select-tag') %>
 <%= f.label :category, "項目類別" %>
 <%= f.text_field :category %>
 <%= f.label :amount, "金額" %>
