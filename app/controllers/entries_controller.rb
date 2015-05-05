@@ -32,7 +32,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(entry_params)
     if @entry.save
-      flash[:info] = "Successfully Created"
+      flash[:info] = "Successfully Created 新增成功"
       redirect_to @entry
     else
       render 'new'
@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
   def update
     @entry = Entry.find(params[:id])
     if @entry.update(entry_params)
-      flash[:info] = "Successfully Modified"
+      flash[:info] = "Successfully Modified 修改成功"
       redirect_to @entry
     else
       render 'detail'
@@ -56,7 +56,7 @@ class EntriesController < ApplicationController
 
   def destroy
     @entry = Entry.find(params[:id]).destroy
-    flash[:info] = "Successfully Deleted"
+    flash[:info] = "Successfully Deleted 刪除成功"
     redirect_to entries_url
   end
 
