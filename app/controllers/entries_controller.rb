@@ -13,8 +13,8 @@ class EntriesController < ApplicationController
     @title           = (params[:sort_month] && params[:sort_month]!="")? "#{params[:sort_month].split("-")[0]}年 #{params[:sort_month].split("-")[1]}月 紀錄" : "#{Date.current.strftime('%Y')}年 #{Date.current.strftime('%m')}月 紀錄"
     @entries_balance = Entry.where("cast(entry_date as text) LIKE '#{date_string}%'").group(:balance_type).sum(:amount)
 
-    @entries_balance["Income"] = 0 if @entries_balance["Income"] == ""
-    @entries_balance["Expense"] = 0 if @entries_balance["Expense"] == ""
+    @entries_balance["Income"] = 0 if @entries_balance["Income"].nil?
+    @entries_balance["Expense"] = 0 if @entries_balance["Expense"].nil?
   end
 
   def detail
