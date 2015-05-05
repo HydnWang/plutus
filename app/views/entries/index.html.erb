@@ -369,13 +369,13 @@
         },
         series: [{
             name: 'Balance',
-            data: [<%= @entries_balance["Income"]-@entries_balance["Expense"] %>],
+            data: [<%= (@entries_balance)?(@entries_balance["Income"]-@entries_balance["Expense"]):0 %>],
         }, {
             name: 'Income',
-            data: [<%= @entries_balance["Income"] %>]
+            data: [<%= (@entries_balance)?(@entries_balance["Income"]):0 %>]
         }, {
             name: 'Expense',
-            data: [<%= @entries_balance["Expense"] %>],
+            data: [<%= (@entries_balance)?(@entries_balance["Expense"]):0 %>],
         }]
     });
   });
