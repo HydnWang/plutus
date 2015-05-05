@@ -311,7 +311,7 @@
     var chart1 = new Highcharts.Chart(option);
   
   $(function () {
-    <% if @entries_balance %>
+    <% if @entries_balance.any? %>
     Highcharts.setOptions({
         colors: ['<%= (@entries_balance["Income"] > @entries_balance["Expense"])? "#7cb5ec" : "#FF0000" %>', '#434348', '#90ed7d' ]
     });
