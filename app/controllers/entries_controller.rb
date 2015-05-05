@@ -6,7 +6,7 @@ class EntriesController < ApplicationController
     if Rails.env.development?
       @entries_select  = Entry.select('strftime(\'%Y-%m\', entry_date) AS date_prefix').group('strftime(\'%Y-%m\', entry_date)').order('entry_date DESC')
     elsif Rails.env.production?
-      @entries_select  = Entry.select("to_char(entry_date, 'YYYY-MM') AS date_prefix").group("to_char(entry_date, 'YYYY-MM')").order('entry_date DESC')
+      @entries_select  = Entry.select("to_char(entry_date, 'YYYY-MM') AS date_prefix").group(:entry_date).order('entry_date DESC')
     end
 
     @entries_data    = Entry.where("cast(entry_date as text) LIKE '#{date_string}%' AND balance_type = 'Expense'").group(:category).sum(:amount)
