@@ -60,6 +60,10 @@ class EntriesController < ApplicationController
     redirect_to entries_url
   end
 
+  def contact
+
+  end
+
   private
 
   def entry_params

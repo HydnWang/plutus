@@ -2,14 +2,7 @@
 <aside class="col-md-4 col-sm-4 col-xs-12">
   <form action="/entries" method="GET" id="search">
     <div class="form-group">
-      <!-- <label for="select" class="control-label">Choose Month</label> -->
-      <%= select_tag "sort_month", options_from_collection_for_select(@entries_select, 'date_prefix', 'date_prefix', params[:sort_month] ), include_blank: "Choose Month", class: "form-control" %>
-      <!-- <select class="form-control" id="select">
-        <option value="">Choose Month</option>
-        <% @entries_select.each do |value| %>
-          <option value="<%= value.date_prefix %>"><%= value.date_prefix %></option>
-        <% end %>
-      </select> -->
+      <%= select_tag "sort_month", options_from_collection_for_select(@entries_select, 'date_prefix', 'date_prefix', params[:sort_month] ), include_blank: "Choose Month 選擇顯示月份", class: "form-control" %>
     </div>
   </form>
   <div id="container" style="width:100%; min-height:400px;"></div>
@@ -30,7 +23,7 @@
       <% @entries.each do |entry| %>
         <tr class="">
           <td><%= entry.entry_date %></td>
-          <td><%= (entry.balance_type == "Expense") ? "支出" : "收入" %></td>
+          <td><%= (entry.balance_type == "Expense") ? "Expense支出" : "Income收入" %></td>
           <td><%= entry.category %></td>
           <td><%= entry.amount %></td>
           <td>
