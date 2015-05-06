@@ -1,7 +1,5 @@
 ### README
 
-This project is made to be a accounting book.
-The first idea came to my mind is only recording expenses and income.
-
-It should have amount, category and description in each data entry.
-And summarize all by day, week, month, so there also would be a calendar.
+This project is made to be a accounting book, simply recording expenses and income.
+It should have amount, category, type and description in each data entry, and summarize all by month including expenses analysis.
+Please find this app on: [https://floating-ocean-3162.herokuapp.com](https://floating-ocean-3162.herokuapp.com) 
