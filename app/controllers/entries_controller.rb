@@ -1,4 +1,6 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!, only: [ :detail, :show, :new, :create, :edit, :update, :destroy ]
+
   def index
     date_string      = (params[:sort_month] && params[:sort_month]!="")?(params[:sort_month]):(Date.current.strftime('%Y-%m'))
     @entries         = Entry.where("cast(entry_date as text) LIKE '#{date_string}%'").paginate(page: params[:page], :per_page => 20).order('entry_date DESC')
@@ -62,6 +64,10 @@ class EntriesController < ApplicationController
 
   def contact
 
+  end
+
+  def after_sign_in_path_for(resource)
+    redirect_to :index
   end
 
   private

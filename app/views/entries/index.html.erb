@@ -26,11 +26,16 @@
           <td><%= (entry.balance_type == "Expense") ? "Expense支出" : "Income收入" %></td>
           <td><%= entry.category %></td>
           <td><%= entry.amount %></td>
-          <td>
-            <%= link_to "Edit", edit_entry_path(entry) %>
-            / 
-            <%= link_to "Delete", entry_path(entry), method: :delete, data:{ confirm: "確定刪除嗎?" } %>
-          </td>
+          <% if user_signed_in? %>
+            <td>
+              <%= link_to "Edit修改", edit_entry_path(entry), class: 'btn btn-primary btn-xs' %>
+              <%= link_to "Delete刪除", entry_path(entry), method: :delete, data:{ confirm: "確定刪除嗎?" }, class: 'btn btn-danger btn-xs' %>
+            </td>
+          <% else %>
+            <td>
+              <%= link_to "Login請登入", new_user_session_path, :class => 'btn btn-success btn-xs'  %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
