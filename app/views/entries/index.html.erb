@@ -37,25 +37,11 @@
             </td>
           <% end %>
         </tr>
-      </thead>
-      <tbody>
-        <% @entries.each do |entry| %>
-          <tr class="">
-            <td><%= entry.entry_date %></td>
-            <td><%= (entry.balance_type == "Expense") ? "Expense支出" : "Income收入" %></td>
-            <td><%= entry.category %></td>
-            <td><%= entry.amount %></td>
-            <td>
-              <%= link_to "Edit", edit_entry_path(entry) %>
-              / 
-              <%= link_to "Delete", entry_path(entry), method: :delete, data:{ confirm: "確定刪除嗎?" } %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate %>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate %>
+</div>
 </div>
 <div class="clearfix"></div>
 <script type="text/javascript">
