@@ -1,10 +1,10 @@
 <% provide(:title, 'Enter') %>
 <h1>Add An Entry</h1>
 <div class="row">
-  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
+  <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
     <%= form_for(@entry) do |f| %>
       <%= render 'full_form_fields', f: f %>
-      <%= f.submit "Send This Record", class: "btn btn-primary" %>
+      <%= f.submit "Send This Record送出", class: "btn btn-primary" %>
       <%= link_to "Cancel", root_path %>
     <% end %>
   </div>
